@@ -1,0 +1,99 @@
+use DSL::Shared::Utilities::FuzzyMatching;
+
+# Data query specific phrases
+role DSL::General::DataQueryWorkflows::Grammar::DataQueryPhrases {
+    # Tokens
+    token arrange-verb { 'arrange' }
+    token ascending-adjective { 'ascending' }
+    token association-noun { 'association' }
+    token broad-adjective { 'broad' }
+    token cast-verb { 'cast' }
+    token character-noun { 'character' }
+    token combine-verb { 'combine' }
+    token cross-verb { 'cross' }
+    token descending-adjective { 'descending' }
+    token dictionary-noun { 'dictionary' }
+    token distinct-adjective { 'distinct' }
+    token divider-noun { 'divider' }
+    token duplicate-adjective { 'duplicate' }
+    token duplicates-noun { 'duplicates' }
+    token form-noun { 'form' }
+    token format-noun { 'format' }
+    token formula-noun { 'formula' }
+    token full-adjective { 'full' }
+    token glimpse-verb { 'glimpse' }
+    token group-verb { 'group' }
+    token inner-adjective { 'inner' }
+    token join-noun { 'join' }
+    token keep-verb { 'keep' }
+    token left-adjective { 'left' }
+    token long-adjective { 'long' }
+    token longer-adjective { 'longer' }
+    token map-verb { 'map' }
+    token mapping-noun { 'mapping' }
+    token melt-verb { 'melt' }
+    token merge-verb { 'merge' }
+    token mutate-verb { 'mutate' }
+    token narrow-adjective { 'narrow' }
+    token omit-directive { 'omit' | 'exclude' }
+    token only-adverb { 'only' }
+    token order-verb { 'order' }
+    token pivot-verb { 'pivot' }
+    token rename-verb { 'rename' }
+    token right-adjective { 'right' }
+    token safe-adjective { 'safe' }
+    token safely-adverb { 'safely' }
+    token select-verb { 'select' }
+    token semi-adjective { 'semi' }
+    token separator-noun { 'separator' }
+    token skim-verb { 'skim' }
+    token skimming-noun { 'skimming' }
+    token sort-verb { 'sort' }
+    token splitter-noun { 'splitter' }
+    token splitting-noun { 'splitting' }
+    token summarise-verb { 'summarise' }
+    token summarize-verb { 'summarize' }
+    token tabulate-verb { 'tabulate' }
+    token ungroup-verb { 'ungroup' }
+    token unique-adjective { 'unique' }
+    token wide-adjective { 'wide' }
+    token wider-adjective { 'wider' }
+
+    # Rules
+    rule contingency-matrix-phrase { <contingency-noun> [ <matrix-noun> | <table-noun> ] }
+    rule cross-tabulate-phrase { <cross-verb> <tabulate-verb> }
+    rule keep-only-phrase { <keep-verb> <only-adverb>? }
+    rule with-formula-phrase { <with-preposition> <the-determiner>? <formula-noun> }
+
+    # True dplyr/tidyverse commands
+    token ascending-phrase { <ascending-adjective> | 'asc' }
+    token descending-phrase { <descending-adjective> | 'desc' }
+
+    rule arrange-by-phrase { <arrange-directive> [ <by-preposition> | <using-preposition> | <with-preposition> ] }
+    rule arrange-directive { <arrange-verb> | <order-verb> | <sort-verb> }
+    rule data-phrase { <.the-determiner>? <data> }
+    rule dictionary-phrase { <.association-noun> | <.dictionary-noun> | <.mapping-noun> }
+    rule filter-phrase { <filter-verb> | <select-verb> }
+    rule format-phrase { <form-noun> | <format-noun> }
+    rule group-by { <group-verb> [ <by-preposition> | <using-preposition> ] }
+    rule group-map { <group-verb> [ <mapping-noun> | <map-verb> ] | <apply-verb> <per-preposition> <group-verb> }
+    rule id-columns-phrase { [ <id-noun> | <identifier-noun> ] <columns> }
+    rule join-phrase { <join-noun> | <merge-verb>  }
+    rule longer-phrase { <longer-adjective> | <long-adjective> | <narrow-adjective> }
+    rule pivot-columns-phrase    { [ <pivot-verb> | <variable-noun> ]? <the-determiner>? <columns> }
+    rule pivot-id-columns-phrase { [ <pivot-verb> | <variable-noun> ]? <the-determiner>? <id-columns-phrase> }
+    rule rename-directive { <rename-verb> }
+    rule reverse-sort-phrase { <reverse-adjective> [ <sort-verb> | <order-verb> ] }
+
+    rule safely-directive { <safe-adjective> | <safely-adverb> }
+    rule select { <select-verb> | <take-verb> | <keep-only-phrase> }
+    rule separator-phrase { <separator-noun> | <divider-noun> | <splitter-noun> | <splitting-noun> }
+    rule string-column-phrase { [ <string-noun> | <character-noun> | <text-noun> ] <column-noun> }
+    rule to-long-form-phrase { <pivot-verb> <to-preposition>? <longer-phrase> <format-phrase>? | <to-preposition> <longer-phrase> <format-phrase> | <melt-verb>  }
+    rule to-wide-form-phrase { <pivot-verb> <to-preposition>? <wider-phrase>  <format-phrase>? | <to-preposition> <wider-phrase>  <format-phrase> | <cast-verb>  }
+    rule value-column-name-phrase { <value-column-phrase> <name-noun> }
+    rule value-column-phrase { <value-noun> <column-noun>? }
+    rule variable-column-name-phrase { <variable-column-phrase> <name-noun> }
+    rule variable-column-phrase { <variable-noun> <column-noun>? }
+    rule wider-phrase  { <wider-adjective>  | <wide-adjective> | <broad-adjective> }
+}
