@@ -1,6 +1,8 @@
 # Data Query Workflows 
 
-Possible alternative name: *"Spoken tidyverse commands"*.  
+*This package is made for demonstration purposes only.*   
+*For practical code generation use the package 
+[DSL::English::DataQueryWorkflows](https://github.com/antononcube/Raku-DSL-English-DataQueryWorkflows).*
 
 ## In brief
 
