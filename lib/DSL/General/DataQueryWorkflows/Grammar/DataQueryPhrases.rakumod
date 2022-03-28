@@ -73,9 +73,6 @@ role DSL::General::DataQueryWorkflows::Grammar::DataQueryPhrases {
     proto token keep-verb {*}
     token keep-verb:sym<English> { :i 'keep' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'keep', 2) }> }
 
-    proto token left-adjective {*}
-    token left-adjective:sym<English> { :i 'left' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'left', 2) }> }
-
     proto token long-adjective {*}
     token long-adjective:sym<English> { :i 'long' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'long', 2) }> }
 
@@ -114,9 +111,6 @@ role DSL::General::DataQueryWorkflows::Grammar::DataQueryPhrases {
 
     proto token rename-verb {*}
     token rename-verb:sym<English> { :i 'rename' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'rename', 2) }> }
-
-    proto token right-adjective {*}
-    token right-adjective:sym<English> { :i 'right' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'right', 2) }> }
 
     proto token safe-adjective {*}
     token safe-adjective:sym<English> { :i 'safe' | ([\w]+) <?{ is-fuzzy-match($0.Str, 'safe', 2) }> }
